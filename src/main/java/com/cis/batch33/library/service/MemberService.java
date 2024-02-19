@@ -1,6 +1,7 @@
 package com.cis.batch33.library.service;
 
 import com.cis.batch33.library.model.Member;
+import java.security.SecureRandom;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -15,7 +16,7 @@ public class MemberService {
     public Member createMember(Member member){
 
         // call the database
-        Long memberId = new Random().nextLong();
+        Long memberId = new SecureRandom().nextLong();
         member.setMemberId(memberId);
         memberMap.put(memberId, member);
         return  member;
