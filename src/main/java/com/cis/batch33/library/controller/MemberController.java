@@ -8,17 +8,31 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/member")
 public class MemberController {
+
     @Autowired
     private MemberService memberService;
 
-    @GetMapping
-    public Member getMember(Long memberId){
+    // Get a member by memberId
+    @GetMapping("/{memberId}")
+    public Member getMember(@PathVariable Long memberId) {
         return memberService.getMember(memberId);
     }
 
-    // create a member
+    // Create a member
     @PostMapping
-    public Member createMember(@RequestBody  Member member){
+    public Member createMember(@RequestBody Member member) {
         return memberService.createMember(member);
+    }
+
+    // Update a member
+    @PutMapping("/{memberId}")
+    public Member updateMember(@PathVariable Long memberId, @RequestBody Member updatedMember) {
+        return memberService.updateMember(memberId, updatedMember);
+    }
+
+    // Delete a member by memberId
+    @DeleteMapping("/{memberId}")
+    public void deleteMember(@PathVariable Long memberId) {
+        memberService.deleteMember(memberId);
     }
 }
