@@ -5,6 +5,8 @@ public class Book {
     private String author;
     private String publisher;
     private int yearOfPublish;
+    private int isbn;
+
 
     public void setBookId(long bookId) {
         this.bookId = bookId;
@@ -22,6 +24,9 @@ public class Book {
         this.yearOfPublish = yearOfPublish;
     }
 
+    public void setIsbn(int isbn) {
+        this.isbn = isbn;
+    }
     public long getBookId() {
         return bookId;
     }
@@ -36,5 +41,9 @@ public class Book {
 
     public int getYearOfPublish() {
         return yearOfPublish;
+    }
+
+    public int getIsbn() {
+        return isbn;
     }
 }
