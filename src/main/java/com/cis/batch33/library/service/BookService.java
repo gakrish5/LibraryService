@@ -10,7 +10,6 @@ import java.util.Random;
 
 @Service
 public class BookService {
-    private Map<Long, Book> bookMap = new HashMap<>();
 
     public Book createBook(Book book){
 

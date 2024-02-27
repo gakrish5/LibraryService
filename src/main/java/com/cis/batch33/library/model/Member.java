@@ -2,17 +2,19 @@ package com.cis.batch33.library.model;
 
 public class Member {
 
-    private long memberId;
+    private int memberId;
     private String firstName;
     private String lastName;
     private String emailAddress;
-    private String phoneNumber;
+    private long phoneNumber;
+    private String memberShipLevel;
+    private int addressId;
 
-    public long getMemberId() {
+    public int getMemberId() {
         return memberId;
     }
 
-    public void setMemberId(long memberId) {
+    public void setMemberId(int memberId) {
         this.memberId = memberId;
     }
 
@@ -40,11 +42,27 @@ public class Member {
         this.emailAddress = emailAddress;
     }
 
-    public String getPhoneNumber() {
+    public long getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
+    public void setPhoneNumber(long phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public String getMemberShipLevel() {
+        return memberShipLevel;
+    }
+
+    public void setMemberShipLevel(String memberShipLevel) {
+        this.memberShipLevel = memberShipLevel;
+    }
+
+    public int getAddressId() {
+        return addressId;
+    }
+
+    public void setAddressId(int addressId) {
+        this.addressId = addressId;
     }
 }

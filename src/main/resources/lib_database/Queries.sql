@@ -42,6 +42,7 @@ WHERE DATE(c.checkout_date) = CURRENT_DATE;
 INSERT INTO book (title, author_name, year_published, quantity)
 VALUES ('Echoes of Eternity', 'Jane Archer', 1965, 9);
 
+use lms;
 -- display all isbns and their checkout status along with book information (title, author etc,.)
 select b.*, bi.isbn, c.is_returned from book b
 join book_isbn bi on b.book_id = bi.book_id

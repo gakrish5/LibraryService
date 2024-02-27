@@ -1,5 +1,6 @@
 package com.cis.batch33.library.controller;
 
+import com.cis.batch33.library.entity.LibraryBook;
 import com.cis.batch33.library.model.Book;
 import com.cis.batch33.library.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,18 +13,18 @@ public class BookController {
     private BookService bookService;
 
     @GetMapping
-    public Book getBook(Long bookId){
+    public LibraryBook getBook(int bookId){
         return bookService.getBook(bookId);
     }
 
     // create a book
     @PostMapping
-    public Book createBook(@RequestBody Book book){
+    public LibraryBook createBook(@RequestBody Book book){
         return bookService.createBook(book);
     }
 
     @PutMapping
-    public Book updateBook(@RequestBody Book book){
+    public LibraryBook updateBook(@RequestBody Book book){
         // Set the memberId for the member object to be updated
         return bookService.updateBook(book);
     }

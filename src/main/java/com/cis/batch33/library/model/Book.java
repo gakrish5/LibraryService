@@ -1,49 +1,49 @@
 package com.cis.batch33.library.model;
 
 public class Book {
-    private long bookId;
-    private String author;
-    private String publisher;
-    private int yearOfPublish;
-    private int isbn;
+    private int bookId;
+    private String title;
+    private String authorName;
+    private int yearPublished;
+    private int quantity;
 
-
-    public void setBookId(long bookId) {
-        this.bookId = bookId;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    public void setPublisher(String publisher) {
-        this.publisher = publisher;
-    }
-
-    public void setYearOfPublish(int yearOfPublish) {
-        this.yearOfPublish = yearOfPublish;
-    }
-
-    public void setIsbn(int isbn) {
-        this.isbn = isbn;
-    }
-    public long getBookId() {
+    public int getBookId() {
         return bookId;
     }
 
-    public String getAuthor() {
-        return author;
+    public void setBookId(int bookId) {
+        this.bookId = bookId;
     }
 
-    public String getPublisher() {
-        return publisher;
+    public String getTitle() {
+        return title;
     }
 
-    public int getYearOfPublish() {
-        return yearOfPublish;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public int getIsbn() {
-        return isbn;
+    public String getAuthorName() {
+        return authorName;
+    }
+
+    public void setAuthorName(String authorName) {
+        this.authorName = authorName;
+    }
+
+    public int getYearPublished() {
+        return yearPublished;
+    }
+
+    public void setYearPublished(int yearPublished) {
+        this.yearPublished = yearPublished;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }
