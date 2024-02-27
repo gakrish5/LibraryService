@@ -33,7 +33,8 @@ public class MemberController {
 
     // Delete a member by memberId
     @DeleteMapping("/{memberId}")
-    public void deleteMember(@PathVariable int memberId) {
+    public String deleteMember(@PathVariable int memberId) {
         memberService.deleteMember(memberId);
+        return "Member Successfully Deleted";
     }
 }
