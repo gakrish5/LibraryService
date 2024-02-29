@@ -1,6 +1,7 @@
 package com.cis.batch33.library.controller;
 
-import com.cis.batch33.library.entity.LibraryBook;
+import com.cis.batch33.library.entity.Book;
+import com.cis.batch33.library.model.BookDTO;
 import com.cis.batch33.library.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -12,18 +13,18 @@ public class BookController {
     private BookService bookService;
 
     @GetMapping("/{bookId}")
-    public LibraryBook getBook(@PathVariable int bookId){
+    public BookDTO getBook(@PathVariable int bookId){
         return bookService.getBook(bookId);
     }
 
     // create a book
     @PostMapping
-    public LibraryBook createBook(@RequestBody LibraryBook book){
-        return bookService.createBook(book);
+    public BookDTO createBook(@RequestBody BookDTO bookDTO){
+        return bookService.createBook(bookDTO);
     }
 
     @PutMapping("/{bookId}")
-    public LibraryBook updateBook(@PathVariable int bookId, @RequestBody LibraryBook updatedBook){
+    public Book updateBook(@PathVariable int bookId, @RequestBody Book updatedBook){
         // Set the memberId for the member object to be updated
         return bookService.updateBook(bookId, updatedBook);
     }

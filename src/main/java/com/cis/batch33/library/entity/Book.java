@@ -1,22 +1,20 @@
 package com.cis.batch33.library.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
+
+import java.util.List;
+
 
 @Table(name="book")
 @Entity
 @Data
-public class LibraryBook {
+public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="book_id")
-    private Integer bookId;
+    private int bookId;
 
     @Column(name="title")
     private String title;
@@ -25,8 +23,11 @@ public class LibraryBook {
     private String authorName;
 
     @Column(name="year_published")
-    private String yearPublished;
+    private int yearPublished;
 
     @Column(name="quantity")
-    private Long quantity;
+    private int quantity;
+
+    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<BookIsbn> bookIsbns;
 }

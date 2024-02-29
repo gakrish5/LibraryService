@@ -16,7 +16,7 @@ where c.member_id = 1000001 and c.is_returned = false;
 
 -- checkout a book for a given member and given book
 INSERT INTO checkout (isbn, member_id, checkout_date, due_date)
-values (3030303030305, 1000001, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP + INTERVAL '45' DAY);
+values (1000000000031, 1000001, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP + INTERVAL '45' DAY);
 
 -- list all checkouts
 select * from checkout;
