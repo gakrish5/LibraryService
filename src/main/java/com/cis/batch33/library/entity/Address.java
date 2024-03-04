@@ -17,7 +17,7 @@ public class Address {
     private String line2;
     private String city;
     private String state;
-    private Integer zip;
+    private int zip;
 
     @OneToMany(mappedBy = "address")
     private List<Member> members;

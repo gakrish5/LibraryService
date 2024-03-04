@@ -6,6 +6,8 @@ import com.cis.batch33.library.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/member")
 public class MemberController {
@@ -17,10 +19,15 @@ public class MemberController {
         return memberService.getMember(memberId);
     }
 
+    @GetMapping
+    public List<MemberDTO> getAllMembers(){
+        return memberService.getAllMembers();
+    }
+
     // create a member
     @PostMapping
-    public Member createMember(@RequestBody Member member){
-        return memberService.createMember(member);
+    public MemberDTO createMember(@RequestBody MemberDTO memberDTO){
+        return memberService.createMember(memberDTO);
     }
 
     // Update a member
@@ -34,4 +41,5 @@ public class MemberController {
     public void deleteMember(@PathVariable int memberId) {
         memberService.deleteMember(memberId);
     }
+
 }

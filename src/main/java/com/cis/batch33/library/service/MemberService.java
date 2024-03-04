@@ -1,71 +1,56 @@
 package com.cis.batch33.library.service;
 
 import com.cis.batch33.library.entity.Member;
-import com.cis.batch33.library.model.AddressDTO;
-import com.cis.batch33.library.model.CheckoutDTO;
 import com.cis.batch33.library.model.MemberDTO;
-import com.cis.batch33.library.repository.LibraryMemberRepository;
+import com.cis.batch33.library.repository.BookRepository;
+import com.cis.batch33.library.repository.MemberRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
 public class MemberService {
 
     @Autowired
-    private LibraryMemberRepository memberRepository;
+    private MemberRepository memberRepository;
 
-    public Member createMember(Member member){
-        return memberRepository.save(member);
-    }
+    @Autowired
+    private ModelMapper modelMapper;
+    @Autowired
+    private BookRepository bookRepository;
 
     public MemberDTO getMember(int memberId) {
-        Optional<Member> memberOptional =
-                memberRepository.findById(memberId);
-        Member member =
-                memberOptional.orElse(new Member());
+        Member member = memberRepository.findById(memberId)
+                .orElseThrow(IllegalArgumentException::new);
+        return modelMapper.map(member, MemberDTO.class);
+    }
 
-        MemberDTO memberDTO = new MemberDTO();
-        memberDTO.setMemberId(member.getMemberId());
-        memberDTO.setMemberShipLevel(member.getMemberShipLevel());
-        memberDTO.setEmailAddress(member.getEmailAddress());
-        memberDTO.setFirstName(member.getFirstName());
-        memberDTO.setLastName(member.getLastName());
-        memberDTO.setPhoneNumber(member.getPhoneNumber());
+    public List<MemberDTO> getAllMembers() {
+        List<Member> members = memberRepository.findAll();
+        return members.stream().map( lm ->
+        {
+            return modelMapper.map(lm, MemberDTO.class);
+        }).collect(Collectors.toList());
+    }
 
-        AddressDTO addressDTO = new AddressDTO();
-        addressDTO.setAddressId(member.getAddress().getAddressId());
-        addressDTO.setLine1(member.getAddress().getLine1());
-        addressDTO.setLine2(member.getAddress().getLine2());
-        addressDTO.setCity(member.getAddress().getCity());
-        addressDTO.setState(member.getAddress().getState());
-        addressDTO.setZip(member.getAddress().getZip());
-
-        List<CheckoutDTO> checkoutDTOS =
-                member.getCheckouts().stream().map(c -> {
-                    CheckoutDTO cdo = new CheckoutDTO();
-                    cdo.setId(c.getId());
-                    cdo.setIsbn(c.getIsbn());
-                    cdo.setCheckoutDate(c.getCheckoutDate());
-                    cdo.setDueDate(c.getDueDate());
-                    cdo.setReturned(c.isReturned());
-                    return  cdo;
-                }).collect(Collectors.toList());
-
-        memberDTO.setAddress(addressDTO);
-        memberDTO.setCheckouts(checkoutDTOS);
-
-        return memberDTO;
+    public MemberDTO createMember(MemberDTO memberDTO){
+        Member m = modelMapper.map(memberDTO,Member.class);
+        Member lm = memberRepository.save(m);
+        memberDTO.setMemberId(lm.getMemberId());
+        memberDTO.getAddress().setAddressId(lm.getAddress().getAddressId());
+        return modelMapper.map(lm, MemberDTO.class);
     }
 
     public Member updateMember(int memberId, Member updatedMember) {
-        return memberRepository.save(updatedMember);
+        Member m = modelMapper.map(updatedMember, Member.class);
+        Member lm = memberRepository.save(m);
+        return modelMapper.map(lm, Member.class);
     }
 
     public void deleteMember(int memberId) {
+        Member member =  memberRepository.findById(memberId).orElseThrow(IllegalArgumentException::new);
         // Simulating database delete
         memberRepository.deleteById(memberId);
     }

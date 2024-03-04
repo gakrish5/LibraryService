@@ -9,5 +9,5 @@ public class AddressDTO {
     private String line2;
     private String city;
     private String state;
-    private Integer zip;
+    private int zip;
 }

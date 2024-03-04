@@ -6,8 +6,9 @@ import java.time.LocalDateTime;
 
 @Data
 public class CheckoutDTO {
-    private Integer id;
-    private Long isbn;
+    private int id;
+    private long isbn;
+    private int memberId;
     private LocalDateTime checkoutDate;
     private LocalDateTime dueDate;
     private boolean isReturned;

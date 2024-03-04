@@ -1,13 +1,18 @@
 package com.cis.batch33.library.entity;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import lombok.Data;
+
 import java.util.List;
+
+import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_EMPTY;
 
 
 @Table(name="library_member")
 @Entity
 @Data
+@JsonInclude(NON_EMPTY)
 public class Member {
 
     @Id
@@ -36,6 +41,4 @@ public class Member {
 
     @OneToMany(mappedBy = "member")
     private List<Checkout> checkouts;
-
-    // lombok
 }

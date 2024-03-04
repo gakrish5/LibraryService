@@ -24,16 +24,16 @@ VALUES
 -- Insert data into the book table
 INSERT INTO book (book_id, title, author_name, year_published, quantity)
 VALUES
-(3000001, 'The Catcher in the Rye', 'J.D. Salinger', 1951, 10),
-(3000002, 'To Kill a Mockingbird', 'Harper Lee', 1960, 15),
-(3000003, 'Harry Potter', 'JK Rowling', 1997, 16),
-(3000004, 'The Great Gatsby', 'F. Scott Fitzgerald', 1925, 16),
-(3000005, 'Pride and Prejudice', 'Jane Austen', 1813, 12),
-(3000006, 'The Hobbit', 'J.R.R. Tolkien', 1937, 16),
-(3000007, 'Moby Dick', 'Herman Melville', 1951, 16),
-(3000008, 'War and Peace', 'Leo Tolstoy', 1869, 8),
-(3000009, 'The Odyssey', 'Homer', 2001, 10),
-(3000010, 'Hamlet', 'William Shakespeare', 1900, 0),
+(3000001, 'The Catcher in the Rye', 'J.D. Salinger', 1951, 2),
+(3000002, 'To Kill a Mockingbird', 'Harper Lee', 1960, 2),
+(3000003, 'Harry Potter', 'JK Rowling', 1997, 2),
+(3000004, 'The Great Gatsby', 'F. Scott Fitzgerald', 1925, 1),
+(3000005, 'Pride and Prejudice', 'Jane Austen', 1813, 1),
+(3000006, 'The Hobbit', 'J.R.R. Tolkien', 1937, 3),
+(3000007, 'Moby Dick', 'Herman Melville', 1951, 5),
+(3000008, 'War and Peace', 'Leo Tolstoy', 1869, 4),
+(3000009, 'The Odyssey', 'Homer', 2001, 6),
+(3000010, 'Hamlet', 'William Shakespeare', 1900, 2),
 (3000011, '1984', 'George Orwell', 1949, 0);
 
 
@@ -79,7 +79,10 @@ VALUES
 (1000000000036, 3000009),
 (1000000000037, 3000009),
 (1000000000038, 3000009),
-(1000000000039, 3000009);
+(1000000000039, 3000009),
+(1000000000040, 3000010),
+(1000000000041, 3000010),
+(1000000000042, 3000011);
 
 
 -- Insert data into the library_member table
@@ -119,4 +122,5 @@ VALUES
 (4000012, 1000000000017, 1000012, '2024-02-23 19:30:00', '2024-04-04 19:30:00', false),
 (4000013, 1000000000018, 1000013, '2024-02-24 21:15:00', '2024-04-08 21:15:00', false),
 (4000014, 1000000000019, 1000014, '2024-01-23 23:00:00', '2024-02-21 23:00:00', true),
-(4000015, 1000000000020, 1000015, '2024-02-21 19:00:00', '2024-03-21 19:00:00', false);
+(4000015, 1000000000020, 1000015, '2024-02-21 19:00:00', '2024-03-21 19:00:00', false),
+(4000016, 1000000000042, 1000001, '2024-03-04 18:00:00', '2024-03-22 18:00:00', false);

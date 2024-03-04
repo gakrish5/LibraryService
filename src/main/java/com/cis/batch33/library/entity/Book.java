@@ -13,21 +13,13 @@ public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="book_id")
     private int bookId;
-
-    @Column(name="title")
     private String title;
-
-    @Column(name="author_name")
     private String authorName;
-
-    @Column(name="year_published")
     private int yearPublished;
-
-    @Column(name="quantity")
     private int quantity;
 
-    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY, orphanRemoval = true)
     private List<BookIsbn> bookIsbns;
 }

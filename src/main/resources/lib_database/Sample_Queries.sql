@@ -3,17 +3,17 @@
 use lms;
 -- To drop the tablespaces
 drop table checkout;
-drop table library_member;
 drop table book_isbn;
 drop table book;
+drop table library_member;
 drop table address;
 
 use lms;
 -- To display all the rows of Tables created
 select * from checkout;
-select * from library_member;
 select * from book_isbn;
 select * from book;
+select * from library_member;
 select * from address;
 
 delete from book where book_id=3000018;
@@ -21,6 +21,12 @@ delete from book where book_id=3000018;
 -- to check the count of books
 select book_id, count(book_id) from book_isbn group by book_id;
 
+select bs.book_id, count(bs.book_id) from checkout c
+join book_isbn bs on c.isbn = bs.isbn
+where c.is_returned is false
+group by bs.book_id;
+
+-- join book b on b.book_id = bs.book_id
 -- Give me all the book titles
 select title from book;
 

@@ -1,6 +1,6 @@
 -- create member record
 INSERT INTO library_member (first_name, last_name, email_address, phone_number, membership_level, address_id)
-VALUES ('Michael', 'John', 'john.mich@gmail.com', '1234567810', 'Gold', 2000004);
+VALUES ('Michael', 'John', 'john.mich@gmail.com', '1234567810', 'Gold', 2000016);
 
 -- find the member by name and mobile_number
 select * from library_member where first_name = "Eva" and phone_number = 9990001111;
@@ -40,7 +40,7 @@ WHERE DATE(c.checkout_date) = CURRENT_DATE;
 
 -- create a book record
 INSERT INTO book (title, author_name, year_published, quantity)
-VALUES ('Echoes of Eternity', 'Jane Archer', 1965, 9);
+VALUES ('Echoes of Eternity', 'Jane Archer', 1965, 2);
 
 use lms;
 -- display all isbns and their checkout status along with book information (title, author etc,.)

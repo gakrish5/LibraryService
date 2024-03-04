@@ -2,7 +2,6 @@ package com.cis.batch33.library.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
-
 import java.time.LocalDateTime;
 
 @Entity
@@ -11,11 +10,16 @@ import java.time.LocalDateTime;
 public class Checkout {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    private Long isbn;
+    private int id;
+
+    @ManyToOne
+    @JoinColumn(name="isbn")
+    private BookIsbn bookIsbn;
+
     @ManyToOne
     @JoinColumn(name = "member_id")
     private Member member;
+
     private LocalDateTime checkoutDate;
     private LocalDateTime dueDate;
     private boolean isReturned;
